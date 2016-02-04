@@ -13,10 +13,10 @@
   },
   "requires": [],
   "canContain": false,
-  "view": "modules/rss/index.html",
-  "files": ["modules/rss/controller.js"],
+  "view": "http://resources.kingofapp.com/modules/rss/index.html",
+  "files": ["http://resources.kingofapp.com/modules/rss/controller.js"],
   "scope": {
-    "feed": "http://elpais.com/rss/elpais/portada.xml"
+    "feed": ""
   },
   "config": [{
     "type": "input",
