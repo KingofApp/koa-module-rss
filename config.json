@@ -1,55 +1,63 @@
 {
-  "name" : "RSS feed",
-  "identifier" : "rss",
-  "description" : "El RSS de cualquier página web disponible en la App. Para que nadie se pierda ninguna actualizacón.",
-  "icon" : "rss",
-  "documentation" : "# **(How to) Configurar el m\u00F3dulo RSS**\r\n\r\nConseguir que todo el mundo est\u00E9 permanentemente i**nformado y actualizado** es quiz\u00E1 el principal objetivo de un **canal RSS**. Por ello, en **King of App** hemos pensado que estar\u00EDa bien desarrollar un m\u00F3dulo que leyera estos formatos y poderlos incluir en una App.\r\n\r\nLa configuraci\u00F3n de este m\u00F3dulo es especialmente sencilla. Solo ser\u00E1 necesario **introducir la URL del feed** de noticias en el campo habilitado.\r\n\r\nUna magn\u00EDfica forma para que todas las actualizaciones de una **App** aparezcan al instante en tu aplicaci\u00F3n.",
-  "type" : "A",
-  "version" : "1.0",
-  "author" : "King of App",
-  "category" : [
-      "others"
+  "name": "RSS feed",
+  "identifier": "rss",
+  "description": {
+    "es-ES": "El RSS de cualquier página web disponible en la App. Para que nadie se pierda ninguna actualizacón.",
+    "en-US": "El RSS de cualquier página web disponible en la App. Para que nadie se pierda ninguna actualizacón."
+  },
+  "documentation": {
+    "es-ES": "# **(How to) Configurar el m\u00F3dulo RSS**\r\n\r\nConseguir que todo el mundo est\u00E9 permanentemente i**nformado y actualizado** es quiz\u00E1 el principal objetivo de un **canal RSS**. Por ello, en **King of App** hemos pensado que estar\u00EDa bien desarrollar un m\u00F3dulo que leyera estos formatos y poderlos incluir en una App.\r\n\r\nLa configuraci\u00F3n de este m\u00F3dulo es especialmente sencilla. Solo ser\u00E1 necesario **introducir la URL del feed** de noticias en el campo habilitado.\r\n\r\nUna magn\u00EDfica forma para que todas las actualizaciones de una **App** aparezcan al instante en tu aplicaci\u00F3n.",
+    "en-US": "# **(How to) Configurar el m\u00F3dulo RSS**\r\n\r\nConseguir que todo el mundo est\u00E9 permanentemente i**nformado y actualizado** es quiz\u00E1 el principal objetivo de un **canal RSS**. Por ello, en **King of App** hemos pensado que estar\u00EDa bien desarrollar un m\u00F3dulo que leyera estos formatos y poderlos incluir en una App.\r\n\r\nLa configuraci\u00F3n de este m\u00F3dulo es especialmente sencilla. Solo ser\u00E1 necesario **introducir la URL del feed** de noticias en el campo habilitado.\r\n\r\nUna magn\u00EDfica forma para que todas las actualizaciones de una **App** aparezcan al instante en tu aplicaci\u00F3n."
+  },
+  "descriptionShort": {
+    "es-ES": "El RSS de cualquier página web disponible en la App.",
+    "en-US": "El RSS de cualquier página web disponible en la App."
+  },
+  "icon": "rss",
+  "type": "A",
+  "version": "1.0",
+  "author": "King of App",
+  "category": [
+    "social"
   ],
-  "price" : 0,
+  "price": 0,
   "subscription": false,
-  "platforms" : [
-      "android",
-      "ios",
-      "windows"
+  "platforms": [
+    "android",
+    "ios",
+    "windows"
   ],
-  "view" : "modules/rss/index.html",
-  "files" : [
-      "modules/rss/controller.js"
+  "view": "modules/rss/index.html",
+  "files": [
+    "modules/rss/controller.js"
   ],
-  "scope" : {
-      "feed" : ""
+  "scope": {
+    "feed": "http://www.feedforall.com/sample.xml"
   },
-  "config" : [
-      {
-          "type" : "input",
-          "key" : "feed",
-          "templateOptions" : {
-              "description" : "url del feed",
-              "pattern" : "(https?://)([/\\w.()-]*).*",
-              "required" : true,
-              "label" : "feed"
-          }
-      }
-  ],
-  "showOn" : {
-      "menu" : true,
-      "market" : true,
-      "dragDrop" : true
+  "config": [{
+    "type": "input",
+    "key": "feed",
+    "templateOptions": {
+      "description": "url del feed",
+      "pattern": "(https?://)([/\\w.()-]*).*",
+      "required": true,
+      "label": "feed"
+    }
+  }],
+  "showOn": {
+    "menu": true,
+    "market": true,
+    "dragDrop": true
   },
-  "images" : {
-      "logo" : "./images/modules/rss_logo.png",
-      "list" : "./images/modules/rss.png",
-      "screenshots" : [
-          "./images/modules/rss_screenshot01.png",
-          "./images/modules/rss_screenshot02.png"
-      ],
-      "popover" : "./images/modules/rss.png",
-      "banner" : "./images/modules/rss_banner.png"
-  },
-  "descriptionShort" : "El RSS de cualquier página web disponible en la App."
+  "images": {
+    "list": "modules/rss/images/list.png",
+    "screenshots": [
+      "modules/rss/images/screenshot01.png",
+      "modules/rss/images/screenshot02.png"
+    ],
+    "popover": "modules/rss/images/popover.png",
+    "banner": "modules/rss/images/banner.png",
+    "logo": "modules/rss/images/logo.png"
+  }
+
 }
