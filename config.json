@@ -32,16 +32,26 @@
     "modules/rss/controller.js"
   ],
   "scope": {
-    "feed": "http://www.feedforall.com/sample.xml"
+    "feed": "http://feeds.feedburner.com/KingOfApp",
+    "image": 2
   },
   "config": [{
     "type": "input",
-    "key": "feed",
+    "key" : "feed",
     "templateOptions": {
       "description": "url del feed",
       "pattern": "(https?://)([/\\w.()-]*).*",
       "required": true,
       "label": "feed"
+    }
+  },
+  {
+    "type": "input",
+    "key" : "image",
+    "templateOptions": {
+      "description": "OPTIONAL: The imagen position to set as post image when no other image is set for the post",
+      "pattern": "[0-9]*",
+      "label": "image position"
     }
   }],
   "showOn": {
