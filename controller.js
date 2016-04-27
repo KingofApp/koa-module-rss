@@ -20,30 +20,42 @@
     var url    = 'https://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(query) + format;
 
     $http.jsonp(url).success(function(json) {
-      $scope.itemsY = json.query.results.rss.channel.item;
-      angular.forEach($scope.itemsY, function(post, key){
-        $scope.itemsY[key].desc = getDescription($scope.itemsY[key]);
+      if (json && json.query && json.query.results){
 
-        if(post.thumbnail && post.thumbnail.length > 0){
-          $scope.itemsY[key].image = post.thumbnail[0].url;
-        }
-        else{
-          $scope.max++;
-          $scope.active++;
-          $http.get($scope.itemsY[key].link).success(function(data){
-            var images = data.match(/<meta.*property="og:image".*>/gmi)  ||
-                         data.match(/<meta.*name="twitter:image".*>/gmi) ||
-                         data.match(/<img[^>]*>/gmi);
+        $scope.itemsY = (json.query.results.rss) ? json.query.results.rss.channel.item :
+                                                   json.query.results.RDF.item;
+        angular.forEach($scope.itemsY, function(post, key){
+          $scope.itemsY[key].desc = getDescription($scope.itemsY[key]);
 
-            for(var i=0; i<images.length; i++){
-              images[i] = images[i].match(/(src=")([^"]*)/gmi)[0].replace('src="','');
-            }
-            $scope.itemsY[key].image = images[$scope.rss.modulescope.image||0];
-            $scope.active--;
-          });
-        }
-      });
+          if(post.thumbnail && post.thumbnail.length > 0){
+            $scope.itemsY[key].image = post.thumbnail[0].url;
+          }
+          else{
+            $scope.max++;
+            $scope.active++;
+            $http.get($scope.itemsY[key].link)
+            .success(function(data){
+              var images = getImages(data);
+              for(var i=0; i<images.length; i++){
+                images[i] = images[i].match(/(src=")([^"]*)/gmi)[0].replace('src="','');
+              }
+              $scope.itemsY[key].image = images[$scope.rss.modulescope.image||0];
+              $scope.active--;
+            })
+            .error(function(){
+              $scope.active--;
+            });
+          }
+        });
+      }
+      else{
+        $scope.error = true;
+      }
 
+
+    })
+    .error(function(error){
+      $scope.error = true;
     });
 
     $scope.$on("koaAppRendered", function() {
@@ -56,6 +68,12 @@
     return item.description.replace(/<[^>]*>/gmi, "")
                            .replace(/read more/gmi, "")
                            .replace(/leer mas/gmi, "");
+  }
+
+  function getImages(data){
+    return data.match(/<meta.*property="og:image".*>/gmi)  ||
+           data.match(/<meta.*name="twitter:image".*>/gmi) ||
+           data.match(/<img[^>]*>/gmi);
   }
 
 }());
