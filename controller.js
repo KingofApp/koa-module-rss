@@ -15,6 +15,10 @@
     $scope.max    = 0;
     $scope.active = 0;
 
+    $scope.goToLink = function(data){
+      window.open(data, '_system');
+    }
+
     var format = '&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=JSON_CALLBACK';
     var query  = 'select * from xml where url = "'+ $scope.rss.modulescope.feed + '"';
     var url    = 'https://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(query) + format;
@@ -24,23 +28,28 @@
       if (!(json && json.query && json.query.results)) $scope.error = true;
       else{
 
-        $scope.itemsY = (json.query.results.rss)  ? json.query.results.rss.channel.item :
-                        (json.query.results.RDF)  ? json.query.results.RDF.item         :
-                        (json.query.results.feed) ? json.query.results.feed.entry       :
+        $scope.itemsY = (json.query.results.rss)  ? json.query.results.rss.channel :
+                        (json.query.results.RDF)  ? json.query.results.RDF         :
+                        (json.query.results.feed) ? json.query.results.feed        :
                                                     null;
-
-        if(!$scope.itemsY) $scope.error = true;
-        else               formatFeed();
+                                                    console.log(json.query.results);
+        if(!$scope.itemsY) $scope.error = 'invalid';
+        else{
+          $scope.itemsY = $scope.itemsY.item || $scope.itemsY.entry;
+          if(!$scope.itemsY) $scope.error = 'empty';
+          else               formatFeed();
+        }
 
       }
     })
     .error(function(error){
-      $scope.error = true;
+      $scope.error = 'invalid';
     });
 
     function formatFeed(){
       angular.forEach($scope.itemsY, function(post, key){
         $scope.itemsY[key].desc = getDescription($scope.itemsY[key]);
+        $scope.itemsY[key].desc = limit($scope.itemsY[key].desc, 180);
 
         if(post.thumbnail && post.thumbnail.length > 0){
           $scope.itemsY[key].image = post.thumbnail[0].url;
@@ -48,8 +57,8 @@
         else{
           $scope.max++;
           $scope.active++;
-          var link = $scope.itemsY[key].link.href || $scope.itemsY[key].link;
-          $http.get(link)
+          $scope.itemsY[key].link = $scope.itemsY[key].link.href || $scope.itemsY[key].link;
+          $http.get($scope.itemsY[key].link)
           .success(function(data){
             var images = getImages(data);
             for(var i=0; i<images.length; i++){
@@ -63,12 +72,9 @@
           });
         }
       });
-
-
   }
 
     $scope.$on("koaAppRendered", function() {
-      console.log("rendering");
       if($scope.active === 0) $scope.ready = true;
     });
   }
@@ -77,11 +83,16 @@
     var text = (item.description) ? item.description :
                (item.content)     ? item.content.content :
                                     null;
-                                    
-    return (!text) ? null : text.replace(/<[^>]*>/gmi, "")
+
+    return (!text) ? null : text.replace(/<[^>]*>/gmi, "")         // replaces any html tag. Ex: <a href="#"> or </a>
                                 .replace(/read more/gmi, "")
                                 .replace(/leer mas/gmi, "")
+                                .replace(/\[\/?wp[^\]]*\]/gmi, "") // replaces any wordpress tag. Ex: [wpgeoip_filter country_code="MX"]
                                 .trim();
+  }
+
+  function limit(str, limit){
+    return (str.length <= limit) ? str : str.substring(0,180)+" ...";
   }
 
   function getImages(data){
