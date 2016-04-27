@@ -1,4 +1,4 @@
-.iframeLoading {
+.rss .iframeLoading {
   width: 100%;
   height: 100%;
   z-index: 0;
@@ -7,7 +7,7 @@
   text-align: center;
   padding-top: 40%;
 }
-.card-content{
+.rss .card-content{
   height: 44px;
   overflow: hidden;
   text-overflow: ellipsis;
