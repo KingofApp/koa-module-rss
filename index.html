@@ -12,7 +12,7 @@
 
     <a href="{{item.link}}" ng-repeat="item in itemsY">
       <koa-card heading="{{item.title}}" image="{{item.image}}">
-        <div class="card-content" ng-bind-html="item.desc"></div>
+        <div class="card-content">{{item.desc}}</div>
       </koa-card>
     </a>
   </div>
