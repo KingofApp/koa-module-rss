@@ -29,6 +29,7 @@
   ],
   "view": "modules/rss/index.html",
   "files": ["modules/rss/controller.js", "modules/rss/style.html"],
+  "deps": ["https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git"],
   "scope": {
     "feed": "http://feeds.feedburner.com/KingOfApp",
     "image": 2
