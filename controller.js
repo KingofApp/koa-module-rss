@@ -4,13 +4,18 @@
   angular
     .controller('rssCtrl', rssCtrl);
 
-  rssCtrl.$inject = ['$scope', '$http', '$location', 'structureService', '$filter'];
+  rssCtrl.$inject = ['$scope', '$rootScope', '$http', '$location', 'structureService', '$filter'];
 
-  function rssCtrl($scope, $http, $location, structureService, $filter) {
+  function rssCtrl($scope, $rootScope, $http, $location, structureService, $filter) {
     //Register upper level modules
     structureService.registerModule($location, $scope, 'rss');
 
     $scope.ready = false;
+
+
+    //RENDER!
+    $rootScope.$broadcast("renderKoaElements", {});
+
 
     $scope.max    = 0;
     $scope.active = 0;
@@ -32,7 +37,7 @@
                         (json.query.results.RDF)  ? json.query.results.RDF         :
                         (json.query.results.feed) ? json.query.results.feed        :
                                                     null;
-                                                    console.log(json.query.results);
+
         if(!$scope.itemsY) $scope.error = 'invalid';
         else{
           $scope.itemsY = $scope.itemsY.item || $scope.itemsY.entry;
@@ -74,8 +79,10 @@
       });
   }
 
-    $scope.$on("koaAppRendered", function() {
-      if($scope.active === 0) $scope.ready = true;
+    $scope.$watch('active', function(newValue, oldValue) {
+      if(oldValue && newValue===0){
+        document.querySelector("div.iframeLoading").style.visibility = 'hidden';
+      }
     });
   }
 

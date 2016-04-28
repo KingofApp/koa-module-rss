@@ -28,7 +28,7 @@
     "windows"
   ],
   "view": "modules/rss/index.html",
-  "files": ["modules/rss/controller.js", "modules/rss/style.css"],
+  "files": ["modules/rss/controller.js", "modules/rss/style.html"],
   "scope": {
     "feed": "http://feeds.feedburner.com/KingOfApp",
     "image": 2
