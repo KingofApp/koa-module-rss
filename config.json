@@ -59,14 +59,13 @@
     "dragDrop": true
   },
   "images": {
-    "list": "modules/rss/images/list.png",
+    "list": "modules/rss/images/rss-feed_list.png",
     "screenshots": [
-      "modules/rss/images/screenshot01.png",
-      "modules/rss/images/screenshot02.png"
+      "modules/rss/images/rss-feed_screenshot01.png"
     ],
-    "popover": "modules/rss/images/popover.png",
-    "banner": "modules/rss/images/banner.png",
-    "logo": "modules/rss/images/logo.png"
+    "popover": "modules/rss/images/rss-feed_popover.png",
+    "banner": "modules/rss/images/rss-feed_popover.png",
+    "logo": "modules/rss/images/rss-feed_icon.png"
   }
 
 }
