@@ -1,3 +1,8 @@
 {
-"rss.feed.error" : "Ups! Hay un problema cargando los datos!"
+"rss.feed.error" : "Ups! Hay un problema cargando los datos!",
+"loading": "cargando",
+"of": "de",
+"error.invalid": "Vaya! Parece que la fuente de datos RSS es invalida.",
+"error.empty"  : "Vaya! No hemos podido encontrar la información que buscas.",
+"error.contact": "Por favor, contacte con el administrador de la app si el problema persiste."
 }

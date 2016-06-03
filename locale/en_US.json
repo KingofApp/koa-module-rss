@@ -1,3 +1,8 @@
 {
-"rss.feed.error" : "Opps! There was a problem loading the feed!"
+"rss.feed.error" : "Opps! There was a problem loading the feed!",
+"loading": "loading",
+"of":"of",
+"error.invalid": "Opps! The RSS source seams to be invalid.",
+"error.empty"  : "Opps! We were not able to find the information you are looking for.",
+"error.contact": "Please, contact your app administrator if the problem persist."
 }

@@ -15,7 +15,7 @@
   },
   "icon": "rss",
   "type": "A",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "King of App",
   "category": [
     "social"
@@ -28,20 +28,29 @@
     "windows"
   ],
   "view": "modules/rss/index.html",
-  "files": [
-    "modules/rss/controller.js"
-  ],
+  "files": ["modules/rss/controller.js", "modules/rss/style.html"],
+  "deps": ["https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git"],
   "scope": {
-    "feed": "http://www.feedforall.com/sample.xml"
+    "feed": "http://feeds.feedburner.com/KingOfApp",
+    "image": 2
   },
   "config": [{
     "type": "input",
-    "key": "feed",
+    "key" : "feed",
     "templateOptions": {
       "description": "url del feed",
       "pattern": "(https?://)([/\\w.()-]*).*",
       "required": true,
       "label": "feed"
+    }
+  },
+  {
+    "type": "input",
+    "key" : "image",
+    "templateOptions": {
+      "description": "OPTIONAL: The imagen position to set as post image when no other image is set for the post",
+      "pattern": "[0-9]*",
+      "label": "image position"
     }
   }],
   "showOn": {
@@ -50,14 +59,13 @@
     "dragDrop": true
   },
   "images": {
-    "list": "modules/rss/images/list.png",
+    "list": "modules/rss/images/rss-feed_list.png",
     "screenshots": [
-      "modules/rss/images/screenshot01.png",
-      "modules/rss/images/screenshot02.png"
+      "modules/rss/images/rss-feed_screenshot01.png"
     ],
-    "popover": "modules/rss/images/popover.png",
-    "banner": "modules/rss/images/banner.png",
-    "logo": "modules/rss/images/logo.png"
+    "popover": "modules/rss/images/rss-feed_popover.png",
+    "banner": "modules/rss/images/rss-feed_popover.png",
+    "logo": "modules/rss/images/rss-feed_icon.png"
   }
 
 }

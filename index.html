@@ -1,9 +1,20 @@
 <div ng-controller="rssCtrl" class="module rss">
 
-  <koa-item ng-if="rss.message">{{rss.message}}</koa-item>
+  <div class="iframeLoading">
+    <img ng-src="{{loader}}" alt="" />
+    <p class="msg" ng-hide="error"> {{'loading' | translate}} {{max - active + 1}} {{'of' | translate}} {{max + 1}}</p>
+    <p class="msg" ng-show="error"> {{ 'error.'+error | translate }}</p>
+    <p class="msg" ng-show="error"> {{ 'error.contact' | translate }}</p>
+  </div>
 
-  <koa-card heading="{{item.title}}" ng-repeat="item in entries track by $index">
-    <div class="card-content">{{item.contentSnippet}}</div>
-  </koa-card>
+  <div class="ready">
+    <koa-item ng-if="rss.message">{{rss.message}}</koa-item>
+
+    <div ng-repeat="item in itemsY">
+      <koa-card heading="{{item.title}}" image="{{item.image}}" ng-click="goToLink('{{item.link}}')">
+        <div class="card-content">{{item.desc}}</div>
+      </koa-card>
+    </div>
+  </div>
 
 </div>
