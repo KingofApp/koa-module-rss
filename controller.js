@@ -9,7 +9,7 @@
   function rssCtrl($scope, $rootScope, $http, $location, structureService, $filter) {
     //Register upper level modules
     structureService.registerModule($location, $scope, 'rss');
-
+    structureService.launchSpinner();
     $scope.ready = false;
 
 
