@@ -9,7 +9,6 @@
   function rssCtrl($scope, $rootScope, $http, $location, structureService, $filter) {
     //Register upper level modules
     structureService.registerModule($location, $scope, 'rss');
-
     $scope.ready = false;
 
 
@@ -30,6 +29,7 @@
 
     $http.jsonp(url)
     .success(function(json) {
+      structureService.launchSpinner('.transitionloader');
       if (!(json && json.query && json.query.results)) $scope.error = true;
       else{
 

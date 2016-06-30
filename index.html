@@ -1,7 +1,9 @@
 <div ng-controller="rssCtrl" class="module rss">
 
   <div class="iframeLoading">
-    <img ng-src="{{loader}}" alt="" />
+    <div class='transitionloader'>
+    </div>
+    <br/>
     <p class="msg" ng-hide="error"> {{'loading' | translate}} {{max - active + 1}} {{'of' | translate}} {{max + 1}}</p>
     <p class="msg" ng-show="error"> {{ 'error.'+error | translate }}</p>
     <p class="msg" ng-show="error"> {{ 'error.contact' | translate }}</p>
