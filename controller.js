@@ -46,9 +46,11 @@
         }
 
       }
+      hideSpinner();
     })
     .error(function(error){
       $scope.error = 'invalid';
+      hideSpinner();
     });
 
     function formatFeed(){
@@ -59,31 +61,31 @@
         if(post.thumbnail && post.thumbnail.length > 0){
           $scope.itemsY[key].image = post.thumbnail[0].url;
         }
-        else{
-          $scope.max++;
-          $scope.active++;
-          $scope.itemsY[key].link = $scope.itemsY[key].link.href || $scope.itemsY[key].link;
-          $http.get($scope.itemsY[key].link)
-          .success(function(data){
-            var images = getImages(data);
-            for(var i=0; i<images.length; i++){
-              images[i] = images[i].match(/(src=")([^"]*)/gmi)[0].replace('src="','');
-            }
-            $scope.itemsY[key].image = images[$scope.rss.modulescope.image||0];
-            $scope.active--;
-          })
-          .error(function(){
-            $scope.active--;
-          });
-        }
+        // else{
+        //   $scope.max++;
+        //   $scope.active++;
+        //   $scope.itemsY[key].link = $scope.itemsY[key].link.href || $scope.itemsY[key].link;
+        //   $http.get($scope.itemsY[key].link)
+        //   .success(function(data){
+        //     var images = getImages(data);
+        //     for(var i=0; i<images.length; i++){
+        //       images[i] = images[i].match(/(src=")([^"]*)/gmi)[0].replace('src="','');
+        //     }
+        //     $scope.itemsY[key].image = images[$scope.rss.modulescope.image||0];
+        //     $scope.active--;
+        //   })
+        //   .error(function(){
+        //     $scope.active--;
+        //   });
+        // }
       });
   }
 
-    $scope.$watch('active', function(newValue, oldValue) {
-      if(oldValue && newValue===0){
-        document.querySelector("div.iframeLoading").style.visibility = 'hidden';
-      }
-    });
+    // $scope.$watch('active', function(newValue, oldValue) {
+    //   if(oldValue && newValue===0){
+    //     document.querySelector("div.iframeLoading").style.visibility = 'hidden';
+    //   }
+    // });
   }
 
   function getDescription(item){
@@ -99,13 +101,20 @@
   }
 
   function limit(str, limit){
-    return (str.length <= limit) ? str : str.substring(0,180)+" ...";
+    return (str === null)        ? "" :
+           (str.length <= limit) ? str :
+                                   str.substring(0,180)+" ...";
   }
 
   function getImages(data){
     return data.match(/<meta.*property="og:image".*>/gmi)  ||
            data.match(/<meta.*name="twitter:image".*>/gmi) ||
            data.match(/<img[^>]*>/gmi);
+  }
+  function hideSpinner() {
+    setTimeout(function () {
+      document.querySelector("div.iframeLoading").style.visibility = 'hidden';
+    }, 100);
   }
 
 }());
