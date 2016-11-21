@@ -113,7 +113,7 @@
   }
   function hideSpinner() {
     setTimeout(function () {
-      document.querySelector("div.iframeLoading").style.visibility = 'hidden';
+      document.querySelector(".rss div.iframeLoading").style.visibility = 'hidden';
     }, 1000);
   }
 
