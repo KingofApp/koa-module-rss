@@ -114,7 +114,7 @@
   function hideSpinner() {
     setTimeout(function () {
       document.querySelector("div.iframeLoading").style.visibility = 'hidden';
-    }, 100);
+    }, 1000);
   }
 
 }());
