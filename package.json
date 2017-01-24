@@ -1,6 +1,6 @@
 {
   "name": "koapp-module-rss",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "El RSS de cualquier página web disponible en la App.",
   "directories": {
     "test": "test"
