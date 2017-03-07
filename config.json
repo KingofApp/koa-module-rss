@@ -2,16 +2,16 @@
   "name": "RSS feed",
   "identifier": "rss",
   "description": {
-    "es-ES": "El RSS de cualquier página web disponible en la App. Para que nadie se pierda ninguna actualizacón.",
-    "en-US": "El RSS de cualquier página web disponible en la App. Para que nadie se pierda ninguna actualizacón."
+    "es-ES": "Informa tus clientes de cada actualización activando el RSS de cualquier página web disponible en la App. ",
+    "en-US": "Inform your clients about every update by activating the RSS of any webpage available in the App."
   },
   "documentation": {
     "es-ES": "modules/rss/documentation/es_ES.md",
     "en-US": "modules/rss/documentation/en_US.md"
   },
   "descriptionShort": {
-    "es-ES": "El RSS de cualquier página web disponible en la App.",
-    "en-US": "El RSS de cualquier página web disponible en la App."
+    "es-ES": "Manten tus clientes actualizados activando la RSS de tu página web!",
+    "en-US": "Keep your clients updated by activating the RSS of your webpage!"
   },
   "icon": "rss",
   "type": "A",
