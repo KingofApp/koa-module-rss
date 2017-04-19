@@ -5,3 +5,9 @@ Conseguir que todo el mundo esté permanentemente i**nformado y actualizado** es
 La configuración de este módulo es especialmente sencilla. Solo será necesario **introducir la URL del feed** de noticias en el campo habilitado.
 
 Una magnífica forma para que todas las actualizaciones de una **App** aparezcan al instante en tu aplicación.
+
+### Details:
+
+- Author: King of app
+- Version: 1.0.9
+- Homepage:
