@@ -9,5 +9,5 @@ Una magnífica forma para que todas las actualizaciones de una **App** aparezcan
 ### Details:
 
 - Author: King of app
-- Version: 1.0.9
+- Version: 1.0.10
 - Homepage:
